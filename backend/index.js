@@ -80,7 +80,7 @@ server.post("/add-product", async (req, res) => {
         // MongoDB will automatically generate createdAt and updatedAt timestamps
         await newProduct.save();
 
-        res.status(201).json({ message: "Product added successfully!", product: newProduct });
+        res.render("product_success");
     } catch (error) {
         console.error("Error adding product:", error);
         res.status(500).send("Internal Server Error");
