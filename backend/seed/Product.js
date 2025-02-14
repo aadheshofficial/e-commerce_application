@@ -198,7 +198,7 @@ const products = [
 
 exports.seedProduct = async () => {
   try {
-    await Product.deleteMany({}); // Deletes existing products
+    // await Product.deleteMany({}); // Deletes existing products
     await Product.insertMany(products); // Inserts new products
     console.log("Products seeded successfully");
   } catch (error) {
