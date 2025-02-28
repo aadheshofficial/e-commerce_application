@@ -1,4 +1,5 @@
 const User = require("../models/User");
+const bcrypt = require("bcryptjs");
 
 const users = [
   {
@@ -21,10 +22,35 @@ const users = [
   },
 ];
 
+const addExtraUsers = async () => {
+  const hashedAdminPassword = await bcrypt.hash("12345678", 10); // Hash password for admin
+  const hashedUserPassword = await bcrypt.hash("12345678", 10);  // Hash password for non-admin
+
+  users.push(
+    {
+      name: "Admin User",
+      email: "aadheshofficial@gmail.com",
+      password: hashedAdminPassword,
+      isVerified: true,
+      isAdmin: true, // Admin flag
+      __v: 0,
+    },
+    {
+      name: "Aadhesh Rock",
+      email: "aadheshrock@gmail.com",
+      password: hashedUserPassword,
+      isVerified: true,
+      isAdmin: false, // Non-admin flag
+      __v: 0,
+    }
+  );
+};
+
 exports.seedUser = async () => {
   try {
+    await addExtraUsers();
     await User.insertMany(users);
-    console.log("User seeded successfully");
+    console.log("Users seeded successfully");
   } catch (error) {
     console.log(error);
   }

@@ -35,7 +35,8 @@ function App() {
         <Route exact path='/product-details/:id' element={<Protected><ProductDetailsPage/></Protected>}/>
 
         {
-          loggedInUser?.isAdmin?(
+          loggedInUser?.isAdmin?
+          (
             // admin routes
             <>
             <Route path='/admin/dashboard' element={<Protected><AdminDashboardPage/></Protected>}/>
