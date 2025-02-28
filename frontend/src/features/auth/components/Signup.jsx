@@ -61,14 +61,7 @@ export const Signup = () => {
   return (
     <Stack width={'100vw'} height={'100vh'} flexDirection={'row'} sx={{overflowY:"hidden"}}>
 
-      {
-        !is900 &&
-
-        <Stack bgcolor={'black'} flex={1} justifyContent={'center'} >
-          <Lottie animationData={ecommerceOutlookAnimation}/>
-        </Stack>
-        
-        }
+    
 
         <Stack flex={1} justifyContent={'center'} alignItems={'center'}>
 
